@@ -7,16 +7,18 @@ Silicon Dawn 私有 OpenClaw Skills 集合。
 | Skill | 描述 |
 |-------|------|
 | [balance-checker](./balance-checker/) | 一次查询所有 AI API 余额（DeepSeek、Moonshot、火山引擎） |
-| [volcengine-balance](./volcengine-balance/) | 查询火山引擎 API 余额 |
 
 ## 安装
 
 ```bash
-# 克隆到本地 skills 目录
-git clone git@github.com:silicondawn/openclaw-skills.git ~/.openclaw/skills-private
+# 克隆到本地
+git clone git@github.com:silicondawn/openclaw-skills.git
 
-# 或复制单个 skill
-cp -r volcengine-balance ~/.openclaw/skills/
+# 复制 skill 到 OpenClaw skills 目录
+cp -r balance-checker ~/.openclaw/skills/
+
+# 安装火山引擎依赖（可选）
+cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
 ```
 
 ## License

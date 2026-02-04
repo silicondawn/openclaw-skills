@@ -5,64 +5,84 @@ description: 查询 AI API 服务商的余额（DeepSeek、Moonshot/Kimi、火�
 
 # Balance Checker Skill
 
-查询各个 AI API 服务商的余额。**一次查询所有平台**。
+一次查询所有 AI API 服务商的余额。
 
 ## 支持的服务商
 
 | 服务商 | 查询方式 | 环境变量 |
 |--------|----------|----------|
-| DeepSeek | API | `DEEPSEEK_API_KEY` |
-| Moonshot/Kimi | API | `MOONSHOT_API_KEY` |
-| 火山引擎 | SDK | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` |
+| DeepSeek | REST API | `DEEPSEEK_API_KEY` |
+| Moonshot/Kimi | REST API | `MOONSHOT_API_KEY` |
+| 火山引擎 | Python SDK | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` |
 
-## 使用方法
+## 触发关键词
 
-用户说以下关键词时触发：
 - "查余额"
 - "还有多少额度"
 - "余额多少"
 - "看看余额"
 - "API 余额"
 
-## 实现
+## 安装
 
-同时执行三个查询，汇总输出。
+火山引擎查询需要 Python SDK，首次使用请运行：
 
-### 1. DeepSeek
 ```bash
-curl -s "https://api.deepseek.com/user/balance" \
-  -H "Authorization: Bearer $DEEPSEEK_API_KEY" \
-  -H "Content-Type: application/json"
+cd ~/.openclaw/skills/balance-checker
+./setup_volcengine.sh
 ```
 
-### 2. Moonshot/Kimi
+## 配置
+
+### 环境变量（推荐）
+
 ```bash
-curl -s "https://api.moonshot.cn/v1/users/me/balance" \
-  -H "Authorization: Bearer $MOONSHOT_API_KEY"
+export DEEPSEEK_API_KEY=sk-xxx
+export MOONSHOT_API_KEY=sk-xxx
+export VOLCENGINE_ACCESS_KEY=AKLTxxx
+export VOLCENGINE_SECRET_KEY=xxx
 ```
 
-### 3. 火山引擎
-```bash
-cd ~/.openclaw/skills/volcengine-balance && ./volcengine_balance.sh
+### OpenClaw 配置
+
+在 `~/.openclaw/openclaw.json` 的 `env` 部分添加上述环境变量。
+
+## 输出示例
+
+```
+🔍 正在查询 API 余额...
+
+💰 DeepSeek 余额
+- 总余额: 304.54 CNY
+- 赠金余额: 0.00 CNY
+- 充值余额: 304.54 CNY
+- 状态: 可用 ✅
+
+🌙 Moonshot/Kimi 余额
+- 可用余额: 450.79 CNY
+- 现金余额: 450.79 CNY
+- 代金券余额: 0 CNY
+
+🌋 火山引擎余额
+- 可用余额: 86.68 CNY
+- 现金余额: 86.68 CNY
+
+✅ 余额查询完成
 ```
 
-## 输出格式
+## 文件结构
 
 ```
-📊 AI API 余额汇总
-====================
-
-💰 DeepSeek
-   可用: xxx CNY
-
-💰 Moonshot/Kimi  
-   可用: xxx CNY
-
-💰 火山引擎
-   可用: xxx CNY
+balance-checker/
+├── SKILL.md              # Skill 描述
+├── check_balance.sh      # 主入口脚本
+├── query_balance.py      # 火山引擎查询（Python）
+├── setup_volcengine.sh   # 火山引擎 SDK 安装脚本
+└── venv/                 # Python 虚拟环境（自动创建）
 ```
 
-## API 文档参考
+## API 文档
+
 - DeepSeek: https://api-docs.deepseek.com/zh-cn/api/get-user-balance
 - Moonshot: https://platform.moonshot.cn/docs/api-reference#user-balance
-- 火山引擎: https://www.volcengine.com/docs/6269/1223898
+- 火山引擎: https://www.volcengine.com/docs/6269/1593138
