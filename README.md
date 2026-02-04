@@ -6,6 +6,7 @@ Silicon Dawn 私有 OpenClaw Skills 集合。
 
 | Skill | 描述 |
 |-------|------|
+| [balance-checker](./balance-checker/) | 一次查询所有 AI API 余额（DeepSeek、Moonshot、火山引擎） |
 | [volcengine-balance](./volcengine-balance/) | 查询火山引擎 API 余额 |
 
 ## 安装
