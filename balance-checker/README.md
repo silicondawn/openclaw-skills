@@ -24,7 +24,15 @@
 
 ## 安装
 
-### 方法 1：直接复制（推荐）
+### 方法 1：ClawdHub（推荐）
+
+```bash
+clawdhub install balance-checker
+```
+
+> 如果没有安装 ClawdHub CLI：`npm i -g clawdhub`
+
+### 方法 2：从 GitHub 安装
 
 ```bash
 # 克隆仓库
@@ -32,16 +40,15 @@ git clone https://github.com/silicondawn/openclaw-skills.git /tmp/openclaw-skill
 
 # 复制 skill
 cp -r /tmp/openclaw-skills/balance-checker ~/.openclaw/skills/
-
-# 安装火山引擎依赖（可选，如果你用火山引擎）
-cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
 ```
 
-### 方法 2：手动下载
+### 安装火山引擎依赖（可选）
 
-1. 下载 [balance-checker](https://github.com/silicondawn/openclaw-skills/tree/main/balance-checker) 目录
-2. 放到 `~/.openclaw/skills/balance-checker/`
-3. 运行 `./setup_volcengine.sh` 安装火山引擎 SDK（可选）
+如果你使用火山引擎，需要安装 Python SDK：
+
+```bash
+cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
+```
 
 ## 配置
 
