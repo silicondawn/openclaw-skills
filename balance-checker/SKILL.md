@@ -1,6 +1,6 @@
 ---
 name: balance-checker
-description: 查询 AI API 服务商的余额（DeepSeek、Moonshot/Kimi、火山引擎）。当用户说"查余额"、"还有多少额度"、"余额多少"时自动触发。
+description: 查询 AI API 服务商的余额（DeepSeek、Moonshot/Kimi、SiliconFlow、火山引擎）。当用户说"查余额"、"还有多少额度"、"余额多少"时自动触发。
 ---
 
 # Balance Checker Skill
@@ -13,6 +13,7 @@ description: 查询 AI API 服务商的余额（DeepSeek、Moonshot/Kimi、火�
 |--------|----------|----------|
 | DeepSeek | REST API | `DEEPSEEK_API_KEY` |
 | Moonshot/Kimi | REST API | `MOONSHOT_API_KEY` |
+| SiliconFlow | REST API | `SILICONFLOW_API_KEY` |
 | 火山引擎 | Python SDK | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` |
 
 ## 触发关键词
@@ -39,6 +40,7 @@ cd ~/.openclaw/skills/balance-checker
 ```bash
 export DEEPSEEK_API_KEY=sk-xxx
 export MOONSHOT_API_KEY=sk-xxx
+export SILICONFLOW_API_KEY=sk-xxx
 export VOLCENGINE_ACCESS_KEY=AKLTxxx
 export VOLCENGINE_SECRET_KEY=xxx
 ```
@@ -63,6 +65,11 @@ export VOLCENGINE_SECRET_KEY=xxx
 - 现金余额: 450.79 CNY
 - 代金券余额: 0 CNY
 
+🌊 SiliconFlow 余额
+- 可用余额: 12.34 CNY
+- 充值余额: 10.00 CNY
+- 总余额: 12.34 CNY
+
 🌋 火山引擎余额
 - 可用余额: 86.68 CNY
 - 现金余额: 86.68 CNY
@@ -85,4 +92,5 @@ balance-checker/
 
 - DeepSeek: https://api-docs.deepseek.com/zh-cn/api/get-user-balance
 - Moonshot: https://platform.moonshot.cn/docs/api-reference#user-balance
+- SiliconFlow: https://docs.siliconflow.cn/cn/api-reference/userinfo/get-user-info
 - 火山引擎: https://www.volcengine.com/docs/6269/1593138

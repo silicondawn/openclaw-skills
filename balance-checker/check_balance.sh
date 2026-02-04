@@ -61,6 +61,30 @@ else
     echo "⚠️  Moonshot: API Key 未设置"
 fi
 
+# SiliconFlow 余额查询
+if [ -n "$SILICONFLOW_API_KEY" ]; then
+    echo ""
+    echo "🌊 SiliconFlow 余额"
+    SF_RESULT=$(curl -s "https://api.siliconflow.cn/v1/user/info" \
+        -H "Authorization: Bearer $SILICONFLOW_API_KEY" 2>/dev/null)
+    
+    if echo "$SF_RESULT" | grep -q '"code":20000'; then
+        BALANCE=$(echo "$SF_RESULT" | grep -o '"balance":"[^"]*"' | cut -d'"' -f4)
+        CHARGE_BALANCE=$(echo "$SF_RESULT" | grep -o '"chargeBalance":"[^"]*"' | cut -d'"' -f4)
+        TOTAL_BALANCE=$(echo "$SF_RESULT" | grep -o '"totalBalance":"[^"]*"' | cut -d'"' -f4)
+        
+        echo "- 可用余额: $BALANCE CNY"
+        echo "- 充值余额: $CHARGE_BALANCE CNY"
+        echo "- 总余额: $TOTAL_BALANCE CNY"
+    else
+        ERROR_MSG=$(echo "$SF_RESULT" | grep -o '"message":"[^"]*"' | cut -d'"' -f4)
+        echo "- 查询失败: ${ERROR_MSG:-$SF_RESULT}"
+    fi
+else
+    echo ""
+    echo "⚠️  SiliconFlow: API Key 未设置"
+fi
+
 # 火山引擎余额查询
 if [ -n "$VOLCENGINE_ACCESS_KEY" ] && [ -n "$VOLCENGINE_SECRET_KEY" ]; then
     echo ""
