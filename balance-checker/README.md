@@ -1,58 +1,58 @@
 # Balance Checker Skill
 
-一次查询所有 AI API 服务商的余额。支持 DeepSeek、Moonshot/Kimi、火山引擎。
+Query all AI API provider balances at once. Supports DeepSeek, Moonshot/Kimi, and Volcengine.
 
-## 功能
+## Features
 
-当你对 agent 说「查余额」「余额多少」「还有多少额度」时，自动查询并汇总所有平台的 API 余额。
+When you say "check balance", "how much balance", or "query balance" to your agent, it automatically queries and summarizes all platform balances.
 
 ```
-🔍 正在查询 API 余额...
+🔍 Checking API balances...
 
-💰 DeepSeek 余额
-- 总余额: 304.54 CNY
-- 状态: 可用 ✅
+💰 DeepSeek Balance
+- Total: 304.54 CNY
+- Status: Available ✅
 
-🌙 Moonshot/Kimi 余额
-- 可用余额: 450.79 CNY
+🌙 Moonshot/Kimi Balance
+- Available: 450.79 CNY
 
-🌋 火山引擎余额
-- 可用余额: 86.68 CNY
+🌋 Volcengine Balance
+- Available: 86.68 CNY
 
-✅ 余额查询完成
+✅ Balance check complete
 ```
 
-## 安装
+## Installation
 
-### 方法 1：ClawdHub（推荐）
+### Method 1: ClawdHub (Recommended)
 
 ```bash
 clawdhub install balance-checker
 ```
 
-> 如果没有安装 ClawdHub CLI：`npm i -g clawdhub`
+> If ClawdHub CLI is not installed: `npm i -g clawdhub`
 
-### 方法 2：从 GitHub 安装
+### Method 2: From GitHub
 
 ```bash
-# 克隆仓库
+# Clone the repo
 git clone https://github.com/silicondawn/openclaw-skills.git /tmp/openclaw-skills
 
-# 复制 skill
+# Copy the skill
 cp -r /tmp/openclaw-skills/balance-checker ~/.openclaw/skills/
 ```
 
-### 安装火山引擎依赖（可选）
+### Install Volcengine Dependencies (Optional)
 
-如果你使用火山引擎，需要安装 Python SDK：
+If you use Volcengine, install the Python SDK:
 
 ```bash
 cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
 ```
 
-## 配置
+## Configuration
 
-在 OpenClaw 配置文件 `~/.openclaw/openclaw.json` 的 `env` 部分添加 API 密钥：
+Add API keys to the `env` section in your OpenClaw config (`~/.openclaw/openclaw.json`):
 
 ```json
 {
@@ -65,47 +65,47 @@ cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
 }
 ```
 
-> **说明**：
-> - DeepSeek 和 Moonshot 只需要 API Key
-> - 火山引擎需要 AK/SK（从[控制台](https://console.volcengine.com/iam/keymanage/)获取）
-> - 只配置你使用的平台即可，未配置的会跳过
+> **Notes:**
+> - DeepSeek and Moonshot only need an API Key
+> - Volcengine requires AK/SK (get from [console](https://console.volcengine.com/iam/keymanage/))
+> - Only configure platforms you use — unconfigured ones are skipped
 
-## 支持的平台
+## Supported Platforms
 
-| 平台 | 环境变量 | 获取密钥 |
-|------|----------|----------|
+| Platform | Environment Variables | Get Keys |
+|----------|----------------------|----------|
 | DeepSeek | `DEEPSEEK_API_KEY` | [platform.deepseek.com](https://platform.deepseek.com/) |
 | Moonshot/Kimi | `MOONSHOT_API_KEY` | [platform.moonshot.cn](https://platform.moonshot.cn/) |
-| 火山引擎 | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` | [console.volcengine.com](https://console.volcengine.com/iam/keymanage/) |
+| Volcengine | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` | [console.volcengine.com](https://console.volcengine.com/iam/keymanage/) |
 
-## 文件结构
+## File Structure
 
 ```
 balance-checker/
-├── SKILL.md              # OpenClaw skill 描述文件
-├── README.md             # 本文档
-├── check_balance.sh      # 主入口脚本
-├── query_balance.py      # 火山引擎查询模块
-├── setup_volcengine.sh   # 火山引擎 SDK 安装脚本
-└── venv/                 # Python 虚拟环境（安装后生成）
+├── SKILL.md              # OpenClaw skill description
+├── README.md             # This document
+├── check_balance.sh      # Main entry script
+├── query_balance.py      # Volcengine query module
+├── setup_volcengine.sh   # Volcengine SDK installer
+└── venv/                 # Python venv (created after install)
 ```
 
-## 常见问题
+## FAQ
 
-### Q: 火山引擎查询失败？
+### Q: Volcengine query failing?
 
-运行安装脚本：
+Run the setup script:
 ```bash
 cd ~/.openclaw/skills/balance-checker && ./setup_volcengine.sh
 ```
 
-### Q: 只想查某一个平台？
+### Q: Only want to check one platform?
 
-直接问 agent 具体平台，比如「DeepSeek 余额多少」。或者只配置你想查的平台的 API Key。
+Ask your agent specifically, like "DeepSeek balance". Or only configure the API key for the platform you want.
 
-### Q: API Key 安全吗？
+### Q: Are my API keys secure?
 
-密钥存储在本地 OpenClaw 配置文件中，不会上传到任何地方。skill 代码不包含任何硬编码凭证。
+Keys are stored locally in your OpenClaw config file and never uploaded anywhere. The skill code contains no hardcoded credentials.
 
 ## License
 

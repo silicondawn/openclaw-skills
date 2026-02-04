@@ -1,121 +1,120 @@
 # OpenClaw Skills Collection
 
-Silicon Dawn 的 OpenClaw Skills 集合。这些技能经过测试和优化，适用于 OpenClaw 框架。
+A curated collection of OpenClaw skills by Silicon Dawn. Tested, optimized, and ready to use.
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 安装 ClawdHub CLI（推荐）
+### Install ClawdHub CLI (Recommended)
 
 ```bash
 npm install -g clawdhub
 ```
 
-### 安装技能
+### Install a Skill
 
 ```bash
-# 从 GitHub 安装
+# From GitHub
 clawdhub install silicondawn/openclaw-skills/balance-checker
 
-# 或者克隆仓库手动安装
+# Or clone and copy manually
 git clone https://github.com/silicondawn/openclaw-skills.git
 cp -r openclaw-skills/balance-checker ~/.openclaw/skills/
 ```
 
-## 📦 可用技能
+## 📦 Available Skills
 
 ### [balance-checker](./balance-checker/)
 
-**一次查询所有 AI API 余额** - 支持 DeepSeek、Moonshot/Kimi、火山引擎
+**Query all AI API balances at once** — supports DeepSeek, Moonshot/Kimi, and Volcengine.
 
-**功能**：
-- 统一查询三个主流 AI API 平台的余额
-- 自动汇总显示，方便预算管理
-- 支持单独查询或批量查询
-- 配置简单，只需 API Key
+**Features:**
+- Unified balance check across three major AI API platforms
+- Automatic summary for easy budget management
+- Supports individual or batch queries
+- Simple configuration — just add your API keys
 
-**触发词**：`查余额`、`余额多少`、`还有多少额度`
+**Triggers:** `check balance`, `how much balance`, `query balance`
 
-**安装**：
+**Install:**
 ```bash
 clawdhub install silicondawn/openclaw-skills/balance-checker
 ```
 
-**配置**：在 OpenClaw 配置文件中添加 API Key（详见 [balance-checker/README.md](./balance-checker/README.md)）
+**Configuration:** Add your API keys to OpenClaw config (see [balance-checker/README.md](./balance-checker/README.md))
 
-## 🛠️ 开发指南
+## 🛠️ Development Guide
 
-### 如何贡献技能
+### Contributing a Skill
 
-1. **创建技能目录**
+1. **Create skill directory**
    ```bash
    mkdir ~/.openclaw/skills/my-skill
    ```
 
-2. **编写 SKILL.md**
+2. **Write SKILL.md**
    ```markdown
    # My Skill
    
-   ## 描述
-   技能描述...
+   ## Description
+   What this skill does...
    
-   ## 触发词
-   - "做某事"
-   - "处理某任务"
+   ## Triggers
+   - "do something"
+   - "handle task"
    
-   ## 文件
-   - `handler.sh` - 主脚本
-   - `requirements.txt` - Python 依赖（可选）
+   ## Files
+   - `handler.sh` - Main script
+   - `requirements.txt` - Python deps (optional)
    ```
 
-3. **测试技能**
+3. **Test the skill**
    ```bash
-   # 在 OpenClaw 中测试
    cd ~/.openclaw/skills/my-skill
    ./handler.sh
    ```
 
-4. **提交到仓库**
+4. **Submit to repo**
    ```bash
    git add my-skill/
    git commit -m "feat: add my-skill"
    git push
    ```
 
-### 技能结构要求
+### Skill Structure
 
 ```
 my-skill/
-├── SKILL.md              # 必须：技能描述文件
-├── README.md             # 推荐：详细文档
-├── handler.sh            # 必须：主脚本（可执行权限）
-├── requirements.txt      # 可选：Python 依赖
-└── other_files/          # 可选：其他文件
+├── SKILL.md              # Required: skill description
+├── README.md             # Recommended: detailed docs
+├── handler.sh            # Required: main script (executable)
+├── requirements.txt      # Optional: Python dependencies
+└── other_files/          # Optional: additional files
 ```
 
-## 🔧 故障排除
+## 🔧 Troubleshooting
 
-### 技能不工作？
-1. 检查文件权限：`chmod +x ~/.openclaw/skills/my-skill/handler.sh`
-2. 检查 OpenClaw 配置：`openclaw status`
-3. 查看日志：`tail -f ~/.openclaw/logs/openclaw.log`
+### Skill not working?
+1. Check file permissions: `chmod +x ~/.openclaw/skills/my-skill/handler.sh`
+2. Check OpenClaw config: `openclaw status`
+3. View logs: `tail -f ~/.openclaw/logs/openclaw.log`
 
-### ClawdHub 安装失败？
-1. 确保 ClawdHub CLI 已安装：`clawdhub --version`
-2. 检查网络连接
-3. 尝试手动安装（克隆仓库复制文件）
+### ClawdHub install failed?
+1. Ensure ClawdHub CLI is installed: `clawdhub --version`
+2. Check network connection
+3. Try manual install (clone repo and copy files)
 
-## 📚 相关资源
+## 📚 Resources
 
-- [OpenClaw 文档](https://docs.openclaw.ai)
-- [ClawdHub 技能市场](https://clawhub.com)
+- [OpenClaw Docs](https://docs.openclaw.ai)
+- [ClawdHub Marketplace](https://clawhub.com)
 - [OpenClaw GitHub](https://github.com/openclaw/openclaw)
 
 ## 📄 License
 
-MIT License - 详见 [LICENSE](./LICENSE) 文件
+MIT License — see [LICENSE](./LICENSE)
 
 ---
 
-**维护者**：Silicon Dawn  
-**仓库**：https://github.com/silicondawn/openclaw-skills  
-**问题反馈**：GitHub Issues
+**Maintainer:** Silicon Dawn  
+**Repository:** https://github.com/silicondawn/openclaw-skills  
+**Issues:** GitHub Issues
