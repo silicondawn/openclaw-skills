@@ -1,6 +1,6 @@
 # Balance Checker Skill
 
-Query all AI API provider balances at once. Supports DeepSeek, Moonshot/Kimi, and Volcengine.
+Query all AI API provider balances at once. Supports DeepSeek, Moonshot/Kimi, SiliconFlow, and Volcengine.
 
 ## Features
 
@@ -15,6 +15,11 @@ When you say "check balance", "how much balance", or "query balance" to your age
 
 🌙 Moonshot/Kimi Balance
 - Available: 450.79 CNY
+
+🌊 SiliconFlow Balance
+- Available: 13.40 CNY
+- Charged: 0 CNY
+- Total: 13.40 CNY
 
 🌋 Volcengine Balance
 - Available: 86.68 CNY
@@ -59,6 +64,7 @@ Add API keys to the `env` section in your OpenClaw config (`~/.openclaw/openclaw
   "env": {
     "DEEPSEEK_API_KEY": "sk-xxx",
     "MOONSHOT_API_KEY": "sk-xxx",
+    "SILICONFLOW_API_KEY": "sk-xxx",
     "VOLCENGINE_ACCESS_KEY": "AKLTxxx",
     "VOLCENGINE_SECRET_KEY": "xxx"
   }
@@ -76,6 +82,7 @@ Add API keys to the `env` section in your OpenClaw config (`~/.openclaw/openclaw
 |----------|----------------------|----------|
 | DeepSeek | `DEEPSEEK_API_KEY` | [platform.deepseek.com](https://platform.deepseek.com/) |
 | Moonshot/Kimi | `MOONSHOT_API_KEY` | [platform.moonshot.cn](https://platform.moonshot.cn/) |
+| SiliconFlow | `SILICONFLOW_API_KEY` | [cloud.siliconflow.cn](https://cloud.siliconflow.cn/) |
 | Volcengine | `VOLCENGINE_ACCESS_KEY` + `VOLCENGINE_SECRET_KEY` | [console.volcengine.com](https://console.volcengine.com/iam/keymanage/) |
 
 ## File Structure
